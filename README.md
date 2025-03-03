@@ -34,7 +34,6 @@ A Flutter app to search for books using the Google Books API and save favorites 
 - **Google Books API**: Provides book search data and metadata.
 - **sqflite**: Local SQLite database for storing favorite books.
 - **Provider**: State management solution for Flutter apps.
-- **sqflite_common_ffi**: Database support for desktop platforms (Windows/Linux/macOS).
 
 ## Troubleshooting
 
