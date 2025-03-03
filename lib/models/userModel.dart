@@ -10,9 +10,9 @@ class Users {
   });
 
   factory Users.fromMap(Map<String, dynamic> json) => Users(
-    userId: json["usrId"],
-    email: json["usrEmail"],
-    password: json["usrPassword"],
+    userId: json["userId"],
+    email: json["email"],
+    password: json["password"],
   );
 
   Map<String, dynamic> toMap() => {
