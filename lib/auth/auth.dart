@@ -6,9 +6,10 @@ import '../pages/home_page.dart';
 import '../theme/theme_manager.dart';
 import 'database_helper.dart';
 
+
+//Login page
 class Login extends StatefulWidget{
   const Login({super.key});
-
   @override
   State<Login> createState() => _LoginState();
 
@@ -21,30 +22,28 @@ class _LoginState extends State <Login> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool isLoginTrue = false;
-
   final db = DatabaseHelper();
 
+  //login function
  login() async{
    var response = await db
        .login(Users(email: _emailController.text, password: _passwordController.text));
    if (response == true) {
-     //If login is correct, then goto notes
+
      if (!mounted) return;
      Navigator.pushReplacement(
          context, MaterialPageRoute(builder: (context) => const HomePage()));
    } else {
-     //If not, true the bool value to show error message
+
      setState(() {
        isLoginTrue = true;
      });
    }
  }
 
-
-
-  @override
+ @override
   Widget build(BuildContext context) {
-    final themeManager = Provider.of<ThemeManager>(context);
+    Provider.of<ThemeManager>(context);
     final currentTheme = Theme.of(context);
     return Scaffold(
       appBar: null,
@@ -57,7 +56,7 @@ class _LoginState extends State <Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Welcome Back!',style: currentTheme.textTheme.displayLarge),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 TextFormField(
                   controller: _emailController,
                   validator: Validators.validateEmail,
@@ -69,7 +68,7 @@ class _LoginState extends State <Login> {
                       )
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 TextFormField(
                   controller: _passwordController,
                   validator: Validators.validatePassword,
@@ -92,7 +91,7 @@ class _LoginState extends State <Login> {
                       )
                   ),
                 ),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 ElevatedButton(
                   onPressed: () async {
                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()),);
@@ -133,6 +132,8 @@ class _LoginState extends State <Login> {
   }
 }
 
+
+// SignUp page
 class SignUp extends StatefulWidget{
   const SignUp({super.key});
 
@@ -155,15 +156,7 @@ class _SignUpState extends State <SignUp> {
     final themeManager = Provider.of<ThemeManager>(context);
     final currentTheme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: (){
-              themeManager.toggleTheme();
-            },
-            icon: const Icon(Icons.brightness_6),)
-        ],
-      ),
+      appBar: null,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -173,7 +166,7 @@ class _SignUpState extends State <SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Sign Up',style: Theme.of(context).textTheme.displayMedium),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
 
                   TextFormField(
                     controller: _nameController,
@@ -186,7 +179,7 @@ class _SignUpState extends State <SignUp> {
                         )
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   TextFormField(
                     controller: _emailController,
                     validator: Validators.validateEmail,
@@ -198,7 +191,7 @@ class _SignUpState extends State <SignUp> {
                         )
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   TextFormField(
                     controller: _passwordController,
                     validator: Validators.validatePassword,
@@ -222,7 +215,7 @@ class _SignUpState extends State <SignUp> {
                         )
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   TextFormField(
                     controller: _confirmPasswordController,
                     validator: (value) => Validators.validateConfirmPassword(value, _passwordController.text),
@@ -245,7 +238,7 @@ class _SignUpState extends State <SignUp> {
                         )
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                   ElevatedButton(
                     onPressed: ()  {
                       //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const Login()));
@@ -282,7 +275,6 @@ class _SignUpState extends State <SignUp> {
                         copyWith(
                           color: currentTheme.primaryColor,
                         ),
-
                       ))
                 ]
             ),

@@ -10,7 +10,7 @@ class DatabaseHelper {
       "create table users (userId INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE , password TEXT, email TEXT)";
 
   String books =
-      "create table favorites(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, author TEXT, thumbnailUrl TEXT))";
+      "create table favorites(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT, author TEXT, thumbnailUrl TEXT)";
 
 Future<Database> initDB() async{
   final databasePath = await getDatabasesPath();
@@ -19,7 +19,7 @@ Future<Database> initDB() async{
       path, version: 1,
       onCreate: (db, version) {
     db.execute(users);
-
+    db.execute(books);
   });
 }
 
