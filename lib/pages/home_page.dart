@@ -101,7 +101,7 @@ class _HomePageState extends State <HomePage> {
         height: 50,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
-          return Icon(Icons.broken_image); // Fallback for failed images
+          return Icon(Icons.broken_image); // in case of fail to load images
         },
       );
     } else {
